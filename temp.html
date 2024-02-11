@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TempTriv</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="nav">
+      
+    </div>
+   <div class="info">
+    
+     <h2><span>Temp</span>Triv</h2>
+     <p>A temperature calculator is a tool that helps you find out how hot or cold something is. It usually has a digital screen where you can see the temperature displayed in numbers. You might use it to check the temperature <br> outside, inside your home, or even the temperature of your body.</p>
+        <h2><span>Step1</span>:Enter the value</h2>
+        <h2><span>Step2</span> :Chose Your Units</h2>
+         <h2> <span>Step3</span>: To get Your results</h2>
+   </div>
+    <div class="warpper">
+        <h2><span>Temp</span>Triv <i class="fa-solid fa-temperature-high"></i></h2>
+        <div class="temp">
+            <input type="text" placeholder="Enter the value" >
+        
+            <select>
+                <i class="fa-solid fa-arrow-right"></i>
+                <option selected>Celcius</option>
+                <option>Kelvin</option>
+                <option>Farenheit</option>
+            </select>
+        </div>
+        <div class="result">
+            <input type="text" placeholder=" Your Results">
+            <select>
+                <option selected>Celcius</option>
+                <option selected>Kelvin</option>
+                <option>Farenheit</option>
+            </select>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    const temp = document.querySelector(".temp input");
+    const result = document.querySelector(".result input");
+    const inputtemp = document.querySelector(".temp select");
+    const resultemp = document.querySelector(".result select");
+
+     
+    temp.oninput = function () {
+        let inputTempValue = inputtemp.value;
+        let resultTempValue = resultemp.value; 
+
+        let CelciusTokelvin = inputTempValue === "Celcius" && resultTempValue==="Kelvin";
+        let CelciusTofarenheit = inputTempValue === "Celcius" && resultTempValue==="Farenheit";
+
+
+
+        let kelvintocelcius = inputTempValue ==="Kelvin" && resultTempValue==="Celcius";
+        let kelvintofarenheit = inputTempValue ==="Kelvin" && resultTempValue==="Farenheit";
+
+
+        let farenheitTocelcius = inputTempValue==="Farenheit"&& resultTempValue==="Celcius";
+        let farenheitTokelvin =  inputTempValue=== "Farenheit"&& resultTempValue==="Kelvin";
+
+     
+
+        let sameUInit = inputTempValue===resultTempValue;
+        //calulations
+
+        let inputone = temp.value;
+        let converttemp = 0;
+
+        if(CelciusTokelvin) {
+            inputone = (inputone * 1) +273.15;
+            result.value = converttemp.toFixed(2);
+
+        }
+        else if(CelciusTofarenheit) {
+            converttemp = (9/5 * inputone) +32;
+            result.value = converttemp.toFixed(2);
+        }
+        else if(kelvintocelcius){
+            converttemp = (inputone - 273.15);
+            result.value  = converttemp.toFixed(2);
+          
+        }
+        else if(kelvintofarenheit){
+            converttemp = (inputone -273.15) +32;
+            result.value = converttemp.toFixed(2);
+        }
+        else if(farenheitTocelcius){
+            converttemp = 5/9 * (converttemp -32);
+            result.value = converttemp.toFixed(2);
+           
+        }
+        else if(farenheitTokelvin ){
+            converttemp = 5/9 * (converttemp -32) + 273.15;
+            result.value = converttemp.toFixed(2);
+           
+        }
+        else if(sameUInit){
+            result.value = converttemp;
+        }
+
+
+    }
+</script>
+    <script src="https://kit.fontawesome.com/5c1b647228.js" crossorigin="anonymous"></script>
+</body>
+</html>
